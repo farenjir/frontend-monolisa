@@ -1,0 +1,7 @@
+{
+	"schemas": {
+		"required": "This field is required",
+		"mobile": "Enter the mobile number correctly",
+		"number": "This field must be a number"
+	}
+}

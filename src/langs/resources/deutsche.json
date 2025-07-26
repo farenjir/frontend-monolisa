@@ -1,0 +1,6 @@
+{
+  "schemas": {
+    "required": "Dieses Feld ist erforderlich",
+    "mobile": "Geben Sie die Handynummer korrekt ein"
+  }
+}
