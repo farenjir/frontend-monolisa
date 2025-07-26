@@ -29,16 +29,16 @@ function ContextApi({ children }: PropsWithChildren) {
 				theme={{
 					algorithm: [themeAntMode, ...fontAntMode] as unknown as MappingAlgorithm,
 					token: themColorObject,
-					components: {
-						Carousel: {
-							colorBgContainer: themColorObject?.colorPrimary,
-							dotWidth: 8,
-							dotHeight: 8,
-						},
-						Timeline: {
-							itemPaddingBottom: 30,
-						},
-					},
+					// components: {
+					// 	Carousel: {
+					// 		colorBgContainer: themColorObject?.colorPrimary,
+					// 		dotWidth: 8,
+					// 		dotHeight: 8,
+					// 	},
+					// 	Timeline: {
+					// 		itemPaddingBottom: 30,
+					// 	},
+					// },
 				}}
 			>
 				{children}

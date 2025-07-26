@@ -2,7 +2,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import { getFromStorage } from "@/utils/storage";
-import { DEFAULT_LANG, LANG_NAME } from "@/utils/constance";
+import { DEFAULT_LANG, LANG_NAME } from "@/constants/app";
 
 import english from "./resources/english.json";
 import deutsche from "./resources/deutsche.json";

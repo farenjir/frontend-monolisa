@@ -9,6 +9,8 @@ import { mainRoutes } from "@/pages/main";
 import { userRoutes } from "@/pages/user";
 import { adminRoutes } from "@/pages/admin";
 
+import "@/assets/styles/global.css"
+
 const router = createBrowserRouter([mainRoutes, userRoutes, adminRoutes]);
 
 export default function App() {

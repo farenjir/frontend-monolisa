@@ -8,7 +8,7 @@ import dateEn from "antd/es/date-picker/locale/en_US";
 import dateDe from "antd/es/date-picker/locale/de_DE";
 
 import { getFromStorage, setToStorage } from "@/utils/storage";
-import { LANG_NAME } from "@/utils/constance";
+import { LANG_NAME } from "@/constants/app";
 
 import { initDayjs } from "./configs/dayjs";
 

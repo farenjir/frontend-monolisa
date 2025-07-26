@@ -1,0 +1,30 @@
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* scroll style */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #5c4b4b73 #0000000d;
+}
+*::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+*::-webkit-scrollbar-track {
+	background: #2726260d;
+}
+*::-webkit-scrollbar-thumb {
+	background-color: #0000004d;
+	border: 3px solid #0000000d;
+}
+
+
+.ltr {
+	direction: ltr !important;
+}
+.rtl {
+	direction: rtl !important;
+}
+
