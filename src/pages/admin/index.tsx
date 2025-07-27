@@ -16,5 +16,10 @@ export const adminRoutes: RouteObject = {
 			id: "adminServices",
 			lazy: async () => ({ Component: (await import("./services")).default }),
 		},
+		{
+			path: "schedule",
+			id: "adminSchedule",
+			lazy: async () => ({ Component: (await import("./schedule")).default }),
+		},
 	],
 };
