@@ -51,7 +51,7 @@ export default function AdminLayout() {
 	const { height } = useViewportSize();
 	const [collapsed, setCollapsed] = useState(false);
 	const {
-		token: { colorBgContainer, borderRadiusLG },
+		token: { colorBgContainer, borderRadiusLG, colorPrimary },
 	} = theme.useToken();
 
 	return (
@@ -68,7 +68,7 @@ export default function AdminLayout() {
 						display: "flex",
 						justifyContent: "end",
 						alignItems: "center",
-						padding:"0px 25px"
+						padding: "0px 25px",
 					}}
 				>
 					<SettingDrawerWithIcon />
@@ -80,6 +80,7 @@ export default function AdminLayout() {
 							height: height - 70,
 							background: colorBgContainer,
 							borderRadius: borderRadiusLG,
+							border: `1px solid ${colorPrimary}`,
 							overflow: "auto",
 						}}
 					>

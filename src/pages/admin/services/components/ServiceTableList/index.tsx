@@ -1,10 +1,9 @@
 import { useRef, useState } from "react";
 import { DeleteOutlined, EditOutlined, SearchOutlined } from "@ant-design/icons";
 import type { InputRef, TableColumnsType, TableColumnType } from "antd";
-import { Button, Flex, Input, Space, Table } from "antd";
+import { Button, Flex, Input, Space, Table, theme } from "antd";
 import type { FilterDropdownProps } from "antd/es/table/interface";
 import Highlighter from "react-highlight-words";
-import { orange, red } from "@ant-design/colors";
 import { useViewportSize } from "@mantine/hooks";
 
 interface DataType {
@@ -22,9 +21,10 @@ const data: DataType[] = Array(200)
 const ServiceTableList = () => {
 	const [searchText, setSearchText] = useState("");
 	const [searchedColumn, setSearchedColumn] = useState("");
-	const searchInput = useRef<InputRef>(null);
 
+	const searchInput = useRef<InputRef>(null);
 	const { height } = useViewportSize();
+	const { token } = theme.useToken();
 
 	const handleSearch = (selectedKeys: string[], confirm: FilterDropdownProps["confirm"], dataIndex: DataIndex) => {
 		confirm();
@@ -132,14 +132,14 @@ const ServiceTableList = () => {
 			width: "20%",
 			render: () => (
 				<Flex gap={20}>
-					<DeleteOutlined title="Delete" style={{ color: red[5], fontSize: "20px" }} />
-					<EditOutlined title="Edit" style={{ color: orange[5], fontSize: "20px" }} />
+					<DeleteOutlined title="Delete" style={{ color: token["red-5"], fontSize: "20px" }} />
+					<EditOutlined title="Edit" style={{ color: token["orange-5"], fontSize: "20px" }} />
 				</Flex>
 			),
 		},
 	];
 
-	return <Table<DataType> columns={columns} dataSource={data} bordered scroll={{ y: height - 290 }} />
+	return <Table<DataType> columns={columns} dataSource={data} bordered scroll={{ y: height - 310 }} />;
 };
 
 export default ServiceTableList;

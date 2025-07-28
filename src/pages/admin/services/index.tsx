@@ -18,7 +18,7 @@ export default function AdminServices() {
 				</Flex>
 				<Flex gap={8}>
 					<AddNewService />
-					<Button type="default" icon={<UserSwitchOutlined />}>
+					<Button color="primary" variant="dashed" icon={<UserSwitchOutlined />}>
 						Assign Service to Personnel
 					</Button>
 				</Flex>
