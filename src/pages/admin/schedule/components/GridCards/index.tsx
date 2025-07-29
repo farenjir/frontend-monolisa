@@ -12,13 +12,13 @@ const DateCard = ({ index }: Props) => {
 	return (
 		!!index && (
 			<Flex vertical gap={2} style={{ paddingTop: "8px" }}>
-				<Divider orientation="right" plain dashed size="small" style={{ padding: 0, margin: 0 }}>
+				<Divider orientation="right" plain  size="small" style={{ padding: 0, margin: 0 }}>
 					{`${index > 9 ? index : `0${index}`}:15`}
 				</Divider>
-				<Divider orientation="right" plain dashed size="small" style={{ padding: 0, margin: 0 }}>
+				<Divider orientation="right" plain  size="small" style={{ padding: 0, margin: 0 }}>
 					{`${index > 9 ? index : `0${index}`}:30`}
 				</Divider>
-				<Divider orientation="right" plain dashed size="small" style={{ padding: 0, margin: 0 }}>
+				<Divider orientation="right" plain  size="small" style={{ padding: 0, margin: 0 }}>
 					{`${index > 9 ? index : `0${index}`}:45`}
 				</Divider>
 			</Flex>
@@ -36,7 +36,7 @@ const SCard = ({ i = "", isDraggable = false, handleAddSlot }: Props) => {
 					<Flex justify="end">
 						<Tooltip title={`Add new card for ${personName}`}>
 							<AppstoreAddOutlined
-								style={{ color: token.colorPrimary }}
+								style={{ color: token.colorPrimary ,fontSize:"20px"}}
 								onClick={() => handleAddSlot(personName)}
 							/>
 						</Tooltip>
@@ -46,7 +46,6 @@ const SCard = ({ i = "", isDraggable = false, handleAddSlot }: Props) => {
 					</Flex>
 				</>
 			)}
-
 			{isDraggable && (
 				<Flex justify="end">
 					<DragOutlined key="layout-draggableHandle" className="layout-draggableHandle cursor-pointer" />

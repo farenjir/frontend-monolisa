@@ -95,7 +95,7 @@ const GridLayout = () => {
 				autoSize={false}
 				isDroppable={false}
 				rowHeight={16}
-				cols={{ lg: 9, md: 9, sm: 9, xs: 9, xxs: 9 }}
+				cols={{ lg: 12, md: 9, sm: 9, xs: 9, xxs: 9 }}
 				layouts={{ lg: layout }}
 				draggableHandle=".layout-draggableHandle"
 				onDragStop={onDragStop}

@@ -10,12 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ant-design/colors": "^7.2.1",
     "@ant-design/icons": "^6.0.0",
     "@mantine/hooks": "^8.2.1",
     "antd": "^5.26.6",
     "axios": "^1.11.0",
     "dayjs": "^1.11.13",
+    "echarts": "^5.6.0",
+    "echarts-gl": "^2.0.9",
     "framer-motion": "^12.23.11",
     "i18next": "^25.3.2",
     "lodash": "^4.17.21",

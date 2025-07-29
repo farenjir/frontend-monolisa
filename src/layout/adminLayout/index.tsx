@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-
 import type { MenuProps } from "antd";
 import { Layout, Menu, theme } from "antd";
 import { useViewportSize } from "@mantine/hooks";
-import { Outlet } from "react-router-dom";
-
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
 	PieChartOutlined,
 	CalendarOutlined,
@@ -16,15 +14,18 @@ import {
 	SolutionOutlined,
 	UsergroupAddOutlined,
 } from "@ant-design/icons";
+
 import SettingDrawerWithIcon from "@/components/setting";
+import { ROUTES_PATH } from "@/constants/routes";
 
 const { Header, Content, Sider } = Layout;
+const { ADMIN } = ROUTES_PATH;
 
 type MenuItem = Required<MenuProps>["items"][number];
 
-function getItem(label: React.ReactNode, key: React.Key, icon?: React.ReactNode, children?: MenuItem[]): MenuItem {
+function getItem(label: string, path: string, icon?: React.ReactNode, children?: MenuItem[]): MenuItem {
 	return {
-		key,
+		key: path,
 		icon,
 		children,
 		label,
@@ -32,9 +33,9 @@ function getItem(label: React.ReactNode, key: React.Key, icon?: React.ReactNode,
 }
 
 const items: MenuItem[] = [
-	getItem("Dashboard", "1", <PieChartOutlined />),
-	getItem("Schedule", "2", <CalendarOutlined />),
-	getItem("Services", "3", <ToolOutlined />),
+	getItem("Dashboard", ADMIN.DASHBOARD, <PieChartOutlined />),
+	getItem("Schedule", ADMIN.SCHEDULE, <CalendarOutlined />),
+	getItem("Services", ADMIN.SERVICES, <ToolOutlined />),
 	getItem("Categories", "4", <AppstoreOutlined />),
 	getItem("Branches", "5", <BankOutlined />),
 	getItem("Add Personnel", "6-1", <TeamOutlined />),
@@ -48,6 +49,8 @@ const items: MenuItem[] = [
 ];
 
 export default function AdminLayout() {
+	const navigate = useNavigate();
+	const { pathname } = useLocation();
 	const { height } = useViewportSize();
 	const [collapsed, setCollapsed] = useState(false);
 	const {
@@ -58,7 +61,15 @@ export default function AdminLayout() {
 		<Layout style={{ minHeight: "100vh" }}>
 			<Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
 				<div className="demo-logo-vertical" style={{ height: "40px" }} />
-				<Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline" items={items} />
+				<Menu
+					theme="dark"
+					selectedKeys={pathname.split("/")}
+					mode="inline"
+					items={items.slice(0,3)}
+					onClick={({ key }) => {
+						navigate(key);
+					}}
+				/>
 			</Sider>
 			<Layout>
 				<Header
