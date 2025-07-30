@@ -8,7 +8,6 @@ import {
 	CalendarOutlined,
 	ToolOutlined,
 	AppstoreOutlined,
-	BankOutlined,
 	TeamOutlined,
 	ScheduleOutlined,
 	SolutionOutlined,
@@ -36,10 +35,8 @@ const items: MenuItem[] = [
 	getItem("Dashboard", ADMIN.DASHBOARD, <PieChartOutlined />),
 	getItem("Schedule", ADMIN.SCHEDULE, <CalendarOutlined />),
 	getItem("Services", ADMIN.SERVICES, <ToolOutlined />),
-	getItem("Categories", "4", <AppstoreOutlined />),
-	getItem("Branches", "5", <BankOutlined />),
-	getItem("Add Personnel", "6-1", <TeamOutlined />),
-	getItem("Personnel List", "6-2", <TeamOutlined />),
+	getItem("Categories", ADMIN.CATEGORIES, <AppstoreOutlined />),
+	getItem("Personnel", ADMIN.PERSONNEL, <TeamOutlined />),
 	getItem("Add Work Schedule", "7", <ScheduleOutlined />),
 	getItem("Add Job Title", "8", <SolutionOutlined />),
 	getItem("Seats", "9", <UsergroupAddOutlined />, [
@@ -65,7 +62,7 @@ export default function AdminLayout() {
 					theme="dark"
 					selectedKeys={pathname.split("/")}
 					mode="inline"
-					items={items.slice(0,3)}
+					items={items.slice(0,5)}
 					onClick={({ key }) => {
 						navigate(key);
 					}}

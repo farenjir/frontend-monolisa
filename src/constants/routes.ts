@@ -10,5 +10,7 @@ export const ROUTES_PATH = {
 		DASHBOARD: "dashboard",
 		SCHEDULE: "schedule",
 		SERVICES: "services",
+		CATEGORIES: "categories",
+		PERSONNEL: "personnel",
 	},
 };

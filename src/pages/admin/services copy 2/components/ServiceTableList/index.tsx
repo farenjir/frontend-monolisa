@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { DeleteOutlined, EditOutlined, QuestionCircleOutlined, SearchOutlined } from "@ant-design/icons";
+import { EditOutlined, SearchOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import type { InputRef, TableColumnsType, TableColumnType } from "antd";
-import { Button, Flex, Input, Popconfirm, Space, Table, theme, Tooltip } from "antd";
+import { Button, Flex, Input, Space, Table, theme, Tooltip } from "antd";
 import type { FilterDropdownProps } from "antd/es/table/interface";
 import Highlighter from "react-highlight-words";
 import { useViewportSize } from "@mantine/hooks";
@@ -112,7 +112,7 @@ const ServiceTableList = ({ showDrawer }: any) => {
 
 	const columns: TableColumnsType<DataType> = [
 		{
-			title: "Service Name",
+			title: "Name",
 			dataIndex: "name",
 			key: "name",
 			...getColumnSearchProps("name"),
@@ -120,10 +120,42 @@ const ServiceTableList = ({ showDrawer }: any) => {
 			sortDirections: ["descend", "ascend"],
 		},
 		{
-			title: "Description",
+			title: "Branch",
 			dataIndex: "description",
 			key: "description",
-			...getColumnSearchProps("description"),
+			filters: [
+				{
+					text: "London",
+					value: "London",
+				},
+				{
+					text: "New York",
+					value: "New York",
+				},
+			],
+			onFilter: (value, record) => record.name.indexOf(value as string) === 0,
+		},
+		{
+			title: "Job",
+			dataIndex: "name",
+			key: "name",
+			filters: [
+				{
+					text: "London",
+					value: "London",
+				},
+				{
+					text: "New York",
+					value: "New York",
+				},
+			],
+			onFilter: (value, record) => record.name.indexOf(value as string) === 0,
+		},
+		{
+			title: "Phone",
+			dataIndex: "name",
+			key: "name",
+			...getColumnSearchProps("name"),
 		},
 		{
 			title: "Actions",
@@ -131,23 +163,23 @@ const ServiceTableList = ({ showDrawer }: any) => {
 			key: "actions",
 			width: "20%",
 			render: () => (
-				<Flex gap={20}>
-					<Popconfirm
-						okType="danger"
-						title="Delete the service"
-						description="Are you sure to delete this service?"
-						icon={<QuestionCircleOutlined style={{ color: "red", fontSize: "15px" }} />}
-					>
-						<DeleteOutlined title="Delete" style={{ color: token["red-5"], fontSize: "20px" }} />
-					</Popconfirm>
-					<Tooltip title="Edit service configs">
-						<EditOutlined
-							title="Edit"
-							style={{ color: token["orange-5"], fontSize: "20px", cursor: "pointer" }}
-							onClick={showDrawer}
-						/>
-					</Tooltip>
-				</Flex>
+				<>
+					<Flex gap={20}>
+						<Tooltip title="Assign service to person">
+							<UnorderedListOutlined
+								title="Assign"
+								style={{ fontSize: "20px", cursor: "pointer", color: token.colorPrimary }}
+							/>
+						</Tooltip>
+						<Tooltip title="Edit person information">
+							<EditOutlined
+								title="Edit"
+								style={{ color: token["orange-5"], fontSize: "20px", cursor: "pointer" }}
+								onClick={showDrawer}
+							/>
+						</Tooltip>
+					</Flex>
+				</>
 			),
 		},
 	];
