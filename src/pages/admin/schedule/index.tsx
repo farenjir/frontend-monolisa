@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { Button, Space } from "antd";
 import GridLayout from "./components/GridLayout";
 
 import type { TabsProps } from "antd";
 import { Tabs } from "antd";
+import CalenderComponent from "./components/Calender";
 
 const MotionDiv = motion.div;
 
@@ -37,6 +38,18 @@ export default function ZoomWithButtons() {
 	const [activeKey, setActiveKey] = useState("today");
 	const [items, setItems] = useState<TabsProps["items"]>(defaultItems);
 
+	const removeChild = useCallback(
+		(keySelected: string) => {
+			const updated = items?.concat({
+				label: `New tab`,
+				key: keySelected,
+				children: null,
+			});
+			setItems(updated);
+		},
+		[items],
+	);
+
 	const add = () => {
 		const newKey = String((items || []).length + 1);
 		setItems([
@@ -44,6 +57,7 @@ export default function ZoomWithButtons() {
 			{
 				label: `New tab`,
 				key: newKey,
+				children: <CalenderComponent removeChild={() => removeChild(newKey)} />,
 			},
 		]);
 		setActiveKey(newKey);
@@ -74,7 +88,7 @@ export default function ZoomWithButtons() {
 		...item,
 		children: (
 			<MotionDiv animate={{ scaleY: scale }} transition={{ type: "spring", stiffness: 260, damping: 20 }}>
-				<GridLayout />
+				{item.children || <GridLayout />}
 			</MotionDiv>
 		),
 	}));
